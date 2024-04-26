@@ -30,7 +30,7 @@
     "tailwindcss": "^3.4.3"
   },
   "scripts": {
-    "dev": "react-scripts start",
+    "dev": "PORT=443 react-scripts start",
     "deploy": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

@@ -65,7 +65,7 @@ app.use("/api/auth", auth);
 
 
 
-server.listen( 5000 );
+server.listen( 80 );
 
 ViteExpress.bind( app, server);
 export default app;
