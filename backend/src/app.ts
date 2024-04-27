@@ -1,7 +1,7 @@
 import express from 'express';
 import auth from "./routes/auth";
 import passport from 'passport';
-import session from 'express-session';
+import session from 'cookie-session';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import connectionDB from './routes/dbConnection'
@@ -10,7 +10,6 @@ import ViteExpress from 'vite-express'
 import { WebSocketServer } from 'ws'
 import http from "http";
 
-const score = require("./scoreModel");
 const app = express();
 
 connectionDB;
@@ -36,13 +35,11 @@ app.use(express.json());
 //sessions middleware
 app.use(session({
     secret: 'react-game',
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
+
         httpOnly: true,
         secure: false,
         maxAge: 24*60*60*1000 //for one day
-    }
+
 }));
 
 //set passport middleware
