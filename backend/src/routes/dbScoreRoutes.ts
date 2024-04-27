@@ -1,5 +1,4 @@
 import express, { Router, Request, Response } from "express";
-import {employeeFeedback} from "common/src/types";
 const Score = require("../scoreModel")
 const router: Router = express.Router();
 
