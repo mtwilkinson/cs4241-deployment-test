@@ -1,5 +1,4 @@
 import express from 'express';
-import example from "./routes/example";
 import auth from "./routes/auth";
 import passport from 'passport';
 import session from 'express-session';
@@ -59,7 +58,6 @@ app.use(
 )
 app.use(bodyParser.json());
 
-app.use("/api/example", example);
 app.use("/api/dbScoreRoutes", dbScoreRoutes);
 app.use("/api/auth", auth);
 
