@@ -6,7 +6,6 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import connectionDB from './routes/dbConnection'
 import dbScoreRoutes from "./routes/dbScoreRoutes";
-import ViteExpress from 'vite-express'
 import { WebSocketServer } from 'ws'
 import http from "http";
 
@@ -36,9 +35,9 @@ app.use(express.json());
 app.use(session({
     secret: 'react-game',
 
-        httpOnly: true,
-        secure: false,
-        maxAge: 24*60*60*1000 //for one day
+    httpOnly: true,
+    secure: false,
+    maxAge: 24*60*60*1000 //for one day
 
 }));
 
@@ -60,7 +59,5 @@ app.use("/api/auth", auth);
 
 
 
-server.listen( 5000 );
-
-ViteExpress.bind( app, server);
+app.listen( 5000 );
 export default app;
