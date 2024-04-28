@@ -6,16 +6,13 @@ function NavBar() {
 
 
     useEffect(() => {
-        const interval = setInterval(() => setLoggedIn(localStorage.getItem("accessToken") === null), 1000);
-        return () => {
-            clearInterval(interval);
-        };
+        setLoggedIn(localStorage.getItem("accessToken") === null);
     }, []);
 
     return (
         <>
             {
-                !loggedIn ? (
+                loggedIn ? (
                     <div className={"min-h-16 flex px-6 items-center w-screen bg-green-700 gap-4"} role="navigation" aria-label="Main navigation" >
                         <a className="font-mono font-bold text-2xl text-white hover:text-emerald-300"
                            href={"/"} title="Go to login page">Login</a>
