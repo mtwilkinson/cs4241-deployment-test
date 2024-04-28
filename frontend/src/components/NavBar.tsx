@@ -1,24 +1,11 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 
 function NavBar() {
-    const [count, setCount] = useState(0);
-    const [loggedIn, setLoggedIn] = useState(false);
-
-    let interval = setInterval(() => setLoggedIn(localStorage.getItem("accessToken") === null), 10);
-    function check() {
-        setLoggedIn(localStorage.getItem("accessToken") === null);
-        setCount(count+1);
-        if (count > 50) {
-            clearInterval(interval);
-        }
-    }
-
-
 
     return (
         <>
             {
-                loggedIn ? (
+                localStorage.getItem("accessToken") === null || !window.location.href.includes('/login')? (
                     <div className={"min-h-16 flex px-6 items-center w-screen bg-green-700 gap-4"} role="navigation" aria-label="Main navigation" >
                         <a className="font-mono font-bold text-2xl text-white hover:text-emerald-300"
                            href={"/"} title="Go to login page">Login</a>
