@@ -44,6 +44,15 @@ function Tile({ value, onClick, isFlipped, isDone }: tileProps) {
     );
 }
 
+export function msToReadable(time: number) {
+    let minutes = "";
+    if (time >= 60000)
+        minutes = (("0" + Math.floor((time / 60000) % 60)).slice(-2) + ":");
+
+    const seconds = ("0" + Math.floor((time / 1000) % 60)).slice((time >= 10000) ? -2 : -1) + ".";
+    const ms = ("0" + Math.floor((time / 10) % 100)).slice(-2);
+    return minutes + seconds + ms;
+}
 // function for the game itself
 function Memory() {
     function createTiles(rows: number, cols: number) {
@@ -176,15 +185,7 @@ function Memory() {
         }
     }
 
-    function msToReadable(time: number) {
-        let minutes = "";
-        if (time >= 60000)
-            minutes = (("0" + Math.floor((time / 60000) % 60)).slice(-2) + ":");
 
-        const seconds = ("0" + Math.floor((time / 1000) % 60)).slice((time >= 10000) ? -2 : -1) + ".";
-        const ms = ("0" + Math.floor((time / 10) % 100)).slice(-2);
-        return minutes + seconds + ms;
-    }
 
     let grid_cols = '';
     if (cols === 4) grid_cols = 'grid-cols-4';
@@ -216,9 +217,8 @@ function Memory() {
                             <select
                                 className="font-mono font-bold bg-green-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
                                 onChange={handleDifficulty}
-                                defaultValue="difficulty"
+                                defaultValue="easy"
                             >
-                                <option value="difficulty" disabled>Difficulty</option>
                                 <option value="easy">Easy</option>
                                 <option value="medium">Medium</option>
                                 <option value="hard">Hard</option>
