@@ -6,7 +6,10 @@ function NavBar() {
 
 
     useEffect(() => {
-        setLoggedIn(localStorage.getItem("accessToken") === null);
+        const interval = setInterval(() => setLoggedIn(localStorage.getItem("accessToken") === null), 1000);
+        return () => {
+            clearInterval(interval);
+        };
     }, []);
 
     return (
