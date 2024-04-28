@@ -1,16 +1,19 @@
 import React, {useEffect, useState} from 'react';
 
 function NavBar() {
+    const [count, setCount] = useState(0);
+    const [loggedIn, setLoggedIn] = useState(false);
 
-    const [loggedIn, setLoggedIn] = useState(false)
-
-
-    useEffect(() => {
-        const interval = setInterval(() => setLoggedIn(localStorage.getItem("accessToken") === null), 1000);
-        return () => {
+    let interval = setInterval(() => setLoggedIn(localStorage.getItem("accessToken") === null), 10);
+    function check() {
+        setLoggedIn(localStorage.getItem("accessToken") === null);
+        setCount(count+1);
+        if (count > 50) {
             clearInterval(interval);
-        };
-    }, []);
+        }
+    }
+
+
 
     return (
         <>
