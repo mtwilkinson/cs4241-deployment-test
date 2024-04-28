@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import '../css/Memory.css';
 
-const ws = new WebSocket( 'ws://localhost:5000/api' );
+const ws = new WebSocket( 'wss://cs4241-deployment-test.onrender.com/' );
 // when interacting with the tile object, these are the props that it accepts
 interface tileProps {
     value: string;
