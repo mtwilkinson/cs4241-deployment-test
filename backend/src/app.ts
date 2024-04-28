@@ -59,5 +59,5 @@ app.use("/api/auth", auth);
 
 
 
-app.listen( 5000 );
+server.listen( 5000 );
 export default app;
