@@ -5,15 +5,15 @@ function NavBar() {
     return (
         <>
             {
-                localStorage.getItem("accessToken") === null || !window.location.href.includes('/login')? (
-                    <div className={"min-h-16 flex px-6 items-center w-screen bg-green-700 gap-4"} role="navigation" aria-label="Main navigation" >
+                localStorage.getItem("accessToken") === null ? (
+                    <div className={"h-16 flex px-6 items-center w-screen bg-green-700 gap-4"} role="navigation" aria-label="Main navigation" >
                         <a className="font-mono font-bold text-2xl text-white hover:text-emerald-300"
                            href={"/"} title="Go to login page">Login</a>
                         <a className="font-mono font-bold text-2xl text-white hover:text-emerald-300"
                            href={"/instructions"} title="Go to instructions page">Instructions</a>
                     </div>
                 ) : (
-                    <div className={"min-h-16 flex px-6 items-center w-screen bg-green-700 gap-4"} role="navigation" aria-label="Main navigation" >
+                    <div className={"h-16 flex px-6 items-center w-screen bg-green-700 gap-4"} role="navigation" aria-label="Main navigation" >
                         <a className="font-mono font-bold text-2xl text-white hover:text-emerald-300"
                            href={"/login"} title="Return to homepage">Homepage</a>
                         <a className=" font-mono font-bold text-2xl text-white hover:text-emerald-300"
