@@ -1,25 +1,11 @@
-import React, {useState} from 'react';
+import React from 'react';
 
-type Props = {
-    loggedOut: boolean
-}
-function NavBar(props: Props) {
-    const [count, setCount] = useState(0);
-    const [logged, setLogged] = useState(props.loggedOut);
-
-    let interval = setInterval(() => check, 500);
-    function check() {
-        setLogged(localStorage.getItem("accessToken") === null);
-        setCount(count+1);
-        if (count > 50) {
-            clearInterval(interval);
-        }
-    }
+function NavBar() {
 
     return (
         <>
             {
-                logged ? (
+                localStorage.getItem("accessToken") === null ? (
                     <div className={"min-h-16 flex px-6 items-center w-screen bg-green-700 gap-4"} role="navigation" aria-label="Main navigation" >
                         <a className="font-mono font-bold text-2xl text-white hover:text-emerald-300"
                            href={"/"} title="Go to login page">Login</a>
