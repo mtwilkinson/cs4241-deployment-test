@@ -14,47 +14,58 @@ import MultiplayerMemory from "./routes/MultiplayerMemory";
 
 function App() {
   const router = createBrowserRouter([
-
-    {
-      path: "/",
-      errorElement: <h2>Something went wrong!</h2>,
-      element: <Root />,
-      children: [
         {
           path: "login",
           errorElement: <h2>Something went wrong!</h2>,
-          element: <Login />,
+          element: <div className="w-full h-screen flex flex-col">
+            <NavBar loggedOut={false}/>
+            <Login/>
+          </div>,
         },
         {
           path: "",
-          element: <Homepage />,
+          element: <div className="w-full h-screen flex flex-col">
+            <NavBar loggedOut={true}/>
+            <Homepage/>
+          </div>,
         },
         {
           path: "instructions",
-          element: <Instructions />,
+          element: <div className="w-full h-screen flex flex-col">
+            <NavBar loggedOut={true}/>
+            <Instructions/>
+          </div>,
         },
         {
           path: "leaderboard",
-          element: <LoginCheck  component={<LeaderBoard />}/>,
+          element: <div className="w-full h-screen flex flex-col">
+            <NavBar loggedOut={true}/>
+            <LoginCheck component={<LeaderBoard/>}/>
+          </div>,
         },
         {
           path: "memory",
-          element: <LoginCheck  component={<Memory />}/>,
+          element: <div className="w-full h-screen flex flex-col">
+            <NavBar loggedOut={true}/>
+            <LoginCheck component={<Memory/>}/>
+          </div>,
         },
         {
           path: "multiplayer-memory",
-          element: <LoginCheck  component={<MultiplayerMemory />}/>,
-        },
-      ],
-    },
-  ]);
+          element:
+              <div className="w-full h-screen flex flex-col">
+                <NavBar loggedOut={true}/>
+                <LoginCheck component={<MultiplayerMemory/>}/>
+              </div>
+        }
+      ]);
 
-  return <RouterProvider router={router} />;
+  return <RouterProvider router={router}/>;
 
   function Root() {
     return (
-      <div className="w-full h-screen flex flex-col">
-        <NavBar />
+        <div className="w-full h-screen flex flex-col">
+        <NavBar  loggedOut={true}/>
         <Outlet />
       </div>
     );
