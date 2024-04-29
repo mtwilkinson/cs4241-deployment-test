@@ -66,11 +66,7 @@ function MultiplayerMemory() {
     const [startTime, setStartTime] = useState<number>(0);
     const [intervalID, setIntervalID] = useState<NodeJS.Timer>();
 
-    const [turn, setTurnn] = useState<number>(0);
-    function setTurn(index:number) {
-        console.log("set Turn to " + index);
-        setTurnn(index)
-    }
+    const [turn, setTurn] = useState<number>(0);
 
     // states: idle, play, won
     const [state, setState] = useState<string>('idle');
@@ -232,6 +228,7 @@ function MultiplayerMemory() {
                 setTiles(cards);
                 setFlipped([]);
                 setStartTime((new Date()).getTime());
+                setTurn(0);
             }
 
         }
